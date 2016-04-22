@@ -1,7 +1,6 @@
 /**
  * Created by namita on 4/21/16.
  */
-
 import {Component} from 'angular2/core';
 import {TaskListComponent} from "./task-list.component";
 import {TaskFormComponent} from "./task-form.component";
@@ -14,14 +13,15 @@ import {ToDoService} from "./todo-service";
     <task-form (newToDo)="addToDo($event)"></task-form>
     <task-list></task-list>
     `,
-    directives:[TaskListComponent,TaskFormComponent]
+    providers: [ToDoService],
+    directives: [TaskListComponent, TaskFormComponent]
 })
 
 export class AppComponent {
-    constructor(public todoService:ToDoService){
+    constructor(public todoService:ToDoService) {
     }
 
-    addToDo(toDo:ToDo){
+    addToDo(toDo:ToDo) {
         this.todoService.toDoList.push(toDo);
     }
 }
